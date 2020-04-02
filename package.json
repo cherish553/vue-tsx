@@ -7,6 +7,20 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "gitHooks": {
+    "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
