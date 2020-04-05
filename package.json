@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
+    "dev": "vue-cli-service serve  --mode development",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -27,14 +27,21 @@
     }
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "babel-preset-env": "^7.0.0-beta.3",
     "core-js": "^3.6.4",
+    "element-ui": "^2.13.0",
+    "install": "^0.13.0",
+    "npm": "^6.14.4",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.2",
     "vue-property-decorator": "^8.3.0",
     "vue-router": "^3.1.5",
+    "vue-tsx-support": "^2.3.3",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.0",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
@@ -46,15 +53,21 @@
     "@vue/cli-plugin-vuex": "^4.2.0",
     "@vue/cli-service": "^4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^5.0.1",
+    "babel-plugin-component": "^1.1.1",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
+    "glob": "^7.1.6",
     "husky": "^4.2.3",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "ttypescript": "^1.5.10",
     "typescript": "~3.7.5",
+    "typescript-transform-paths": "^1.1.14",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -1,5 +1,9 @@
 {
+ 
+ 
   "compilerOptions": {
+    "noImplicitAny":false,
+    "noImplicitThis":false,
     // "strictPropertyInitialization": false,
     "target": "esnext",
     "module": "esnext",
@@ -16,9 +20,9 @@
       "webpack-env"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": [ "src/*"],
+      "@/page/*": [ "./src/page/*"],
+      "@/page/article":["./src/page/article/index.vue"]
     },
     "lib": [
       "esnext",

@@ -1,30 +1,23 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Vue from 'vue'
+import Router from 'vue-router'
+const files = require.context('./modules', false, /\.ts$/)
 
-Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-];
-
-const router = new VueRouter({
+Vue.use(Router)
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-});
-
-export default router;
+  routes: [
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/page/login')
+    },
+    ...files.keys().map(item=>files(item).default)
+  ]
+})
+// router.beforeEach((to, from, next) => {
+//   // if ((to.path === '/' && !getCookie('token')) || (!to.name && !getCookie('token'))) return next({ name: 'login' })
+//   // if ((to.path === '/' && getCookie('token')) || (to.name === 'login' && getCookie('token')) || (!to.name && getCookie('token'))) return next({ name: 'article-index' })
+//   // if (!getCookie('token') && to.name !== 'login') return next({ name: 'login' })
+//   next()
+// })
+export default router
