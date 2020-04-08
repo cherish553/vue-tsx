@@ -5,8 +5,8 @@ module.exports = {
     https: false,
     overlay: {
       warnings: true,
-      errors: true
-    }
+      errors: true,
+    },
   },
   lintOnSave: 'error',
   // 基本URL
@@ -47,15 +47,15 @@ module.exports = {
   // },
   // 请求代理
   // devServer: {
-    
-    // proxy: {
-    //   '/api': {
-    //     target: process.env.VUE_APP_BaseUrl,
-    //     pathRewrite: { '^/api': '' },
-    //     changeOrigin: true,
-    //     secure: false
-    //   }
-    // }
+
+  // proxy: {
+  //   '/api': {
+  //     target: process.env.VUE_APP_BaseUrl,
+  //     pathRewrite: { '^/api': '' },
+  //     changeOrigin: true,
+  //     secure: false
+  //   }
+  // }
   // },
   configureWebpack: {
     resolve: {
@@ -68,7 +68,7 @@ module.exports = {
         // '@img': '@/assets/image',
         // '@/page': '@/page/*'
       },
-      extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
+      extensions: ['.js', '.vue', '.json', '.ts', '.tsx'],
     },
 
     // externals: process.env.NODE_ENV === 'development' ? {} : {
@@ -79,5 +79,5 @@ module.exports = {
     //   'axios': 'axios',
     //   'cookie': 'js-cookie'
     // }
-  }
+  },
 }

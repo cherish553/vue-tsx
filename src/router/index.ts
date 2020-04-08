@@ -9,10 +9,10 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/page/login')
+      component: () => import('@/page/login'),
     },
-    ...files.keys().map(item=>files(item).default)
-  ]
+    ...files.keys().map(item => files(item).default),
+  ],
 })
 // router.beforeEach((to, from, next) => {
 //   // if ((to.path === '/' && !getCookie('token')) || (!to.name && !getCookie('token'))) return next({ name: 'login' })

@@ -1,22 +1,22 @@
-import { Component, Prop } from 'vue-property-decorator';
-import { Component as tsc } from 'vue-tsx-support';
+import { Component, Prop } from 'vue-property-decorator'
+import { Component as tsc } from 'vue-tsx-support'
 
 interface Props {
-  namea: string;
+  namea: string
 }
 @Component({
   name: 'HelloWorld',
 })
 export default class HelloWorld extends tsc<Props> {
-  names = 'hellowprd';
-  @Prop() private namea!: string;
+  public names = 'hellowprd'
+  @Prop() private namea!: string
   render() {
-    const { names, namea } = this;
+    const { names, namea } = this
     return (
       <div class="hello">
         {names}
         {namea}
       </div>
-    );
+    )
   }
 }
