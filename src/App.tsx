@@ -6,7 +6,7 @@ export default class About extends tsc<Vue> {
   names: string | number = 'login.names'
   render() {
     return (
-      <div>
+      <div id="app">
         {/* <div onClick={() => this.jump('tag')}>标签</div>
         <div onClick={() => this.jump('article')}>文章</div>
         <div onClick={() => this.jump('category')}>分类</div> */}

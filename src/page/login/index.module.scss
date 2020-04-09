@@ -1,6 +1,16 @@
   @import '@/style/index.scss';
 
   .container {
-      @include flex(center);
-      width: 100%;
+    @include flex(center);
+    width: 100%;
+  }
+
+  .card {
+    width: 400px;
+    background: rgba(0, 0, 0, 0.6) !important
+  }
+
+  .title {
+    text-align: center;
+    color: white
   }

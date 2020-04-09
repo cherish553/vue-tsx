@@ -14,10 +14,8 @@ const router = new Router({
     ...files.keys().map(item => files(item).default),
   ],
 })
-// router.beforeEach((to, from, next) => {
-//   // if ((to.path === '/' && !getCookie('token')) || (!to.name && !getCookie('token'))) return next({ name: 'login' })
-//   // if ((to.path === '/' && getCookie('token')) || (to.name === 'login' && getCookie('token')) || (!to.name && getCookie('token'))) return next({ name: 'article-index' })
-//   // if (!getCookie('token') && to.name !== 'login') return next({ name: 'login' })
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') return next({ name: 'login' })
+  next()
+})
 export default router

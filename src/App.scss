@@ -1,3 +1,20 @@
-.cherishs{
- display: flex;
+*{
+    margin: 0;
+    padding: 0;
+}
+html,
+body,
+#app,
+.container {
+    height: 100%;
+}
+
+.whiteLabel {
+    label {
+        color: white !important
+    }
+}
+
+#app {
+    background-image: url('http://cdns.cherish553.cn/back.jpg');
 }
