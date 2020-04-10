@@ -6,7 +6,7 @@ import 'vue-tsx-support/enable-check'
 import element from '@/plugin/element'
 Vue.use(element)
 Vue.config.productionTip = false
-export const vue = new Vue({
+export default new Vue({
   router,
   store,
   render: h => h(App),

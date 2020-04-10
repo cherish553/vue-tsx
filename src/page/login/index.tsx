@@ -1,38 +1,51 @@
-import { Component as tsc } from 'vue-tsx-support'
-import { Component } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import style from './index.module.scss'
 import classNames from 'classnames'
-// import {add} from '@/api/article'
-
+import { login } from '@/api/user'
+import debounce from 'lodash/debounce'
+import md5 from 'md5'
+import { From } from '@/mixins'
+import { normalRules } from '@/util/rule'
+// import { mapActions } from 'vuex'
+import {
+  State,
+  // Getter,
+  // Action,
+  Mutation,
+  // namespace
+} from 'vuex-class'
 @Component
-export default class About extends tsc<Vue> {
-  names = 'login.names'
+export default class Login extends Mixins(From) {
+  @State('user') user!: string
+  @Mutation('setUser') setUser
   form = {
     userName: '',
     passWord: '',
   }
-  rules = {
-    userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-    passWord: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-  }
-  handleClick(row) {
-    console.log(row)
-    // console.log(this)
-  }
-  async created(): Promise<void> {
-    await this.$nextTick()
-    ;((this.$refs.form as this).$el as HTMLFormElement).onsubmit = e =>
-      e.preventDefault()
+  rules = normalRules([
+    { key: 'userName', message: '用户名' },
+    { key: 'passWord', message: '密码' },
+  ])
+  mounted() {
+    console.log(this.user)
+    this.preventFormSubmit('form')
   }
   // 提交表单
-  submit(ref: string) {
-    ;(this.$refs[ref] as HTMLFormElement).validate(valid => console.log(valid))
+  async submit(ref: string) {
+    const validate = await this.validate(ref)
+    if (!validate) return
+    this.login()
   }
-  // 重置表单
-  reset(ref: string) {
-    ;(this.$refs[ref] as HTMLFormElement).resetFields()
-  }
+  // 登录
+  login = debounce(async () => {
+    let { passWord } = this.form
+    passWord = md5(passWord)
+    const data = await login({ ...this.form, passWord })
+    console.log(data)
+    this.$store.dispatch('setUser')
+  }, 150)
   render() {
+    const { rules, form, submit, reset } = this
     return (
       <div class={classNames(style.container, 'container')}>
         <el-card class={style.card}>
@@ -41,42 +54,38 @@ export default class About extends tsc<Vue> {
           </div>
           <el-form
             class="whiteLabel"
-            rules={this.rules}
+            rules={rules}
             ref="form"
             label-width="70px"
-            {...{ props: { model: this.form } }}
+            {...{ props: { model: form } }}
           >
             <el-form-item label="用户名" prop="userName">
               <el-input
                 type="text"
-                v-model={this.form.userName}
+                v-model={form.userName}
                 nativeOnKeyup={({ keyCode }) =>
-                  keyCode === 13 && this.handleClick
+                  keyCode === 13 && submit('form')
                 }
               ></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="passWord">
               <el-input
                 type="password"
-                v-model={this.form.passWord}
+                v-model={form.passWord}
                 nativeOnKeyup={({ keyCode }) =>
-                  keyCode === 13 && this.handleClick
+                  keyCode === 13 && submit('form')
                 }
               ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" onClick={() => this.submit('form')}>
+              <el-button type="primary" onClick={() => submit('form')}>
                 确认登录
               </el-button>
-              <el-button onClick={() => this.reset('form')}>重置</el-button>
+              <el-button onClick={() => reset('form')}>重置</el-button>
             </el-form-item>
           </el-form>
         </el-card>
       </div>
     )
   }
-  chifan = () => {
-    console.log(this.names)
-  }
 }
-// </script>

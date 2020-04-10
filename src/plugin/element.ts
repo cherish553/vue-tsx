@@ -35,5 +35,4 @@ export default {
       .use(Input)
   },
 }
-// * Vue.use(Select)
 Vue.prototype.$message = Message
