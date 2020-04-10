@@ -32,9 +32,14 @@ export default class Login extends Mixins(From) {
   }
   // 提交表单
   async submit(ref: string) {
+    // try {
+    this.$router.push('login')
+    // } catch (err) {}
+    return
     const validate = await this.validate(ref)
     if (!validate) return
     this.login()
+    this.$router
   }
   // 登录
   login = debounce(async () => {
