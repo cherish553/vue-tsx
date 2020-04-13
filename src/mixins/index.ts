@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import { Component } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 @Component
 export class From extends Vue {
   // 当form下只有一个input则阻止enter自动提交
@@ -8,7 +7,7 @@ export class From extends Vue {
   //     e.preventDefault()
   // }
   // 提交表单
-  validate = async (ref: string) => {
+  validate = async (ref: string): Promise<boolean> => {
     try {
       await (this.$refs[ref] as HTMLFormElement).validate()
       return true
@@ -17,7 +16,7 @@ export class From extends Vue {
     }
   }
   // 重置表单
-  reset = (ref: string) => {
+  reset = (ref: string): void => {
     ;(this.$refs[ref] as HTMLFormElement).resetFields()
   }
 }

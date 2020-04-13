@@ -5,7 +5,7 @@ const message = (type: MessageType) => (message: string) =>
   vue.$message({ message, type })
 export const Warn = message('warning')
 export const Error = message('error')
-export const enum ErrorStatus {
+export enum ErrorStatus {
   '请求错误' = 400,
   '未授权，请登录' = 401,
   '拒绝访问' = 403,

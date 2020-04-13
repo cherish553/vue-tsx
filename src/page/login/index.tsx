@@ -7,7 +7,7 @@ import debounce from 'lodash/debounce'
 import md5 from 'md5'
 import { From } from '@/mixins'
 import { normalRules } from '@/util/rule'
-import { userModule } from '@/store/index'
+import { user } from '@/store/index'
 @Component
 export default class Login extends Mixins(From) {
   form = {
@@ -18,23 +18,19 @@ export default class Login extends Mixins(From) {
     { key: 'userName', message: '用户名' },
     { key: 'passWord', message: '密码' },
   ])
-  mounted() {
-    userModule.setFirstName('aaaaaaa')
-    console.log(userModule.fullName)
-  }
   // 提交表单
-  async submit(ref: string) {
+  async submit(ref: string): Promise<void | undefined> {
     const validate = await this.validate(ref)
     if (!validate) return
     this.login()
   }
   // 登录
-  login = debounce(async () => {
+  login = debounce(async (): Promise<void | undefined> => {
     let { passWord } = this.form
     passWord = md5(passWord)
     const data = await login({ ...this.form, passWord })
-    console.log(data)
-    this.$store.dispatch('setUser')
+    if (!data) return
+    user.setUserAction(data)
   }, 150)
   render() {
     const { rules, form, submit, reset } = this
@@ -50,7 +46,7 @@ export default class Login extends Mixins(From) {
             rules={rules}
             ref="form"
             label-width="70px"
-            {...{ props: { model: form } }}
+            props={{ model: form }}
           >
             <el-form-item label="用户名" prop="userName">
               <el-input
