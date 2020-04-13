@@ -8,18 +8,13 @@ import {
   Form,
   FormItem,
   Input,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Popover,
 } from 'element-ui'
 class Vues {
-  public use(
-    arg:
-      | typeof Button
-      | typeof Card
-      | typeof Table
-      | typeof TableColumn
-      | typeof Form
-      | typeof FormItem
-      | typeof Input
-  ) {
+  public use(arg) {
     if (arg) return this
     return this
   }
@@ -33,6 +28,10 @@ export default {
       .use(Form)
       .use(FormItem)
       .use(Input)
+      .use(Dropdown)
+      .use(DropdownItem)
+      .use(DropdownMenu)
+      .use(Popover)
   },
 }
 Vue.prototype.$message = Message

@@ -1,5 +1,5 @@
 import { Component, Mixins } from 'vue-property-decorator'
-import { modifiers as m } from 'vue-tsx-support'
+import { modifiers as mod } from 'vue-tsx-support'
 import style from './index.module.scss'
 import classNames from 'classnames'
 import { login } from '@/api/user'
@@ -8,9 +8,10 @@ import md5 from 'md5'
 import { From } from '@/mixins'
 import { normalRules } from '@/util/rule'
 import { user } from '@/store/index'
+import { LoginParams } from '@/interface'
 @Component
 export default class Login extends Mixins(From) {
-  form = {
+  form: LoginParams = {
     userName: '',
     passWord: '',
   }
@@ -41,7 +42,7 @@ export default class Login extends Mixins(From) {
             <h2 class={style.title}>李可凡个人博客管理后台</h2>
           </div>
           <el-form
-            nativeOnSubmit={m.prevent}
+            nativeOnSubmit={mod.prevent}
             class="whiteLabel"
             rules={rules}
             ref="form"
@@ -52,14 +53,14 @@ export default class Login extends Mixins(From) {
               <el-input
                 type="text"
                 v-model={form.userName}
-                nativeOnKeyup={m.enter(() => submit('form'))}
+                nativeOnKeyup={mod.enter(() => submit('form'))}
               ></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="passWord">
               <el-input
                 type="password"
                 v-model={form.passWord}
-                nativeOnKeyup={m.enter(() => submit('form'))}
+                nativeOnKeyup={mod.enter(() => submit('form'))}
               ></el-input>
             </el-form-item>
             <el-form-item>

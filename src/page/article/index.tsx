@@ -1,7 +1,7 @@
 import { Component as tsc } from 'vue-tsx-support'
 import { Component } from 'vue-property-decorator'
 // import style from './login.module.scss'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 // import {add} from '@/api/article'
 interface Chifan {
   (): void
@@ -12,11 +12,11 @@ export default class About extends tsc<Vue> {
   render() {
     return (
       <div class="cherishs">
-        {this.names}
+        {/* {this.names} */}
         {/* login */}
         {/* <div class={style.hello} onClick={this.chifan}>{this.names}</div> */}
         {/* <input type="text" v-model={this.names} /> */}
-        <HelloWorld namea={'123'} />
+        {/* <HelloWorld namea={'123'} /> */}
       </div>
     )
   }

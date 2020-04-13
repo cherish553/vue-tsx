@@ -1,13 +1,13 @@
-interface ArrKey {
+type ArrKey = {
   key: string
   message: string
 }
-interface RulesDetail {
+type RulesDetail = {
   required: boolean
   message: string
   trigger: string
 }
-interface Rule {
+type Rule = {
   [propname: string]: Array<RulesDetail>
 }
 export function normalRules(key: string, message: string): void

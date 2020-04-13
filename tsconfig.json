@@ -1,10 +1,5 @@
 {
- 
- 
   "compilerOptions": {
-    "noImplicitAny":false,
-    "noImplicitThis":false,
-    // "strictPropertyInitialization": false,
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -22,7 +17,6 @@
     "paths": {
       "@/*": [ "src/*"],
       "@/page/*": [ "./src/page/*"],
-      "@/page/article":["./src/page/article/index.vue"]
     },
     "lib": [
       "esnext",
