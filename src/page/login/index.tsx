@@ -7,17 +7,9 @@ import debounce from 'lodash/debounce'
 import md5 from 'md5'
 import { From } from '@/mixins'
 import { normalRules } from '@/util/rule'
-import {
-  State,
-  // Getter,
-  // Action,
-  Mutation,
-  // namespace
-} from 'vuex-class'
+import { userModule } from '@/store/index'
 @Component
 export default class Login extends Mixins(From) {
-  @State('user') user!: string
-  @Mutation('setUser') setUser
   form = {
     userName: '',
     passWord: '',
@@ -26,6 +18,10 @@ export default class Login extends Mixins(From) {
     { key: 'userName', message: '用户名' },
     { key: 'passWord', message: '密码' },
   ])
+  mounted() {
+    userModule.setFirstName('aaaaaaa')
+    console.log(userModule.fullName)
+  }
   // 提交表单
   async submit(ref: string) {
     const validate = await this.validate(ref)
