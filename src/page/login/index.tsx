@@ -9,12 +9,24 @@ import { From } from '@/mixins'
 import { normalRules } from '@/util/rule'
 import { user } from '@/store/index'
 import { LoginParams } from '@/interface'
+interface Data {
+  tag: boolean
+}
+interface DataScope {
+  row: Data
+}
 @Component
 export default class Login extends Mixins(From) {
   form: LoginParams = {
     userName: '',
     passWord: '',
   }
+  data: Array<Data> = [
+    {
+      tag: true,
+    },
+  ]
+  value = true
   rules = normalRules([
     { key: 'userName', message: '用户名' },
     { key: 'passWord', message: '密码' },
@@ -37,6 +49,18 @@ export default class Login extends Mixins(From) {
     const { rules, form, submit, reset } = this
     return (
       <el-card class={classNames(style.container, 'container')}>
+        <el-table ref="filterTable" data={this.data} style="width: 100%">
+          <el-table-column prop="tag" label="标签" width="400">
+            {(scope: DataScope) => (
+              <el-switch
+                v-model={scope.row.tag}
+                active-color="#13ce66"
+                inactive-color="#ff4949"
+              ></el-switch>
+            )}
+          </el-table-column>
+        </el-table>
+
         <el-card class={style.card}>
           <div slot="header" class="clearfix">
             <h2 class={style.title}>李可凡个人博客管理后台</h2>

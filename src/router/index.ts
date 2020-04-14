@@ -11,6 +11,7 @@ function push(
 ): void
 
 function push(
+  this: Route,
   location: RawLocation,
   onResolve?: Function | undefined,
   onReject?: ErrorHandler | undefined
