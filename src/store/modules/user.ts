@@ -1,7 +1,7 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-class-modules'
 import Cookies from 'js-cookie'
 import { LoginData } from '@/interface'
-import router from '@/router'
+import { jump } from '@/util'
 @Module
 export default class UserModule extends VuexModule {
   name = (() => Cookies.get('name'))()
@@ -17,7 +17,7 @@ export default class UserModule extends VuexModule {
       Cookies.set(item, data[item])
     })
     this.setUser(data.name)
-    router.push({ name: 'article' })
+    jump('article')
   }
 
   @Action

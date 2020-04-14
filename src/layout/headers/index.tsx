@@ -1,3 +1,9 @@
+import { Component, Vue } from 'vue-property-decorator'
+import { jump } from '@/util'
+import style from './index.module.scss'
+import { user } from '@/store/'
+import classnames from 'classnames'
+
 type FullScreen = HTMLElement & {
   requestFullScreen: Function
   webkitRequestFullScreen: Function
@@ -15,21 +21,15 @@ const dropdownItem = [
   'http://cdns.cherish553.cn/back.jpg',
   'http://cdns.cherish553.cn/back1.jpg',
   'http://cdns.cherish553.cn/back2.jpeg',
-].map((item, index) => ({
-  src: item,
-  command: index,
-}))
-import { Component, Vue } from 'vue-property-decorator'
-import style from './index.module.scss'
-import { user } from '@/store/'
-import classnames from 'classnames'
+]
+
 @Component
 export default class Headers extends Vue {
   full = false
   // 退出登录
   logout() {
     user.removeUserAction()
-    this.$router.push({ name: 'login' })
+    jump('login')
   }
   // 修改主题
   changeMode(index: number) {
@@ -72,9 +72,9 @@ export default class Headers extends Vue {
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
-              {dropdownItem.map(item => (
-                <el-dropdown-item key={item.src} command={item.command}>
-                  <img class="dropdownImg" src={item.src} />
+              {dropdownItem.map((item, index) => (
+                <el-dropdown-item key={item} command={index}>
+                  <img class="dropdownImg" src={item} />
                 </el-dropdown-item>
               ))}
             </el-dropdown-menu>
