@@ -19,4 +19,12 @@ export default class UserModule extends VuexModule {
     this.setUser(data.name)
     router.push({ name: 'article' })
   }
+
+  @Action
+  removeUserAction(data: Array<keyof LoginData> = ['name', 'token']) {
+    data.forEach(item => {
+      Cookies.remove(item)
+    })
+    this.setUser('')
+  }
 }

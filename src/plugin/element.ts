@@ -12,6 +12,8 @@ import {
   DropdownItem,
   DropdownMenu,
   Popover,
+  Menu,
+  MenuItem,
 } from 'element-ui'
 class Vues {
   public use(arg) {
@@ -32,6 +34,8 @@ export default {
       .use(DropdownItem)
       .use(DropdownMenu)
       .use(Popover)
+      .use(Menu)
+      .use(MenuItem)
   },
 }
 Vue.prototype.$message = Message

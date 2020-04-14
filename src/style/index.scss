@@ -3,3 +3,9 @@
     justify-content: $value;
     align-items: $align;
 }
+
+@mixin borderBox($padding) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: $padding
+}
