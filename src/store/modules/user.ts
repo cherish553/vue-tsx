@@ -12,8 +12,8 @@ export default class UserModule extends VuexModule {
   }
 
   @Action
-  setUserAction(data: LoginData) {
-    Object.keys(data).forEach(item => {
+  setUserAction(data: LoginData): void {
+    ;(Object.keys(data) as Array<keyof LoginData>).forEach((item): void => {
       Cookies.set(item, data[item])
     })
     this.setUser(data.name)

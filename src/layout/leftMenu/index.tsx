@@ -1,4 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator'
+import style from './index.module.scss'
 // 左侧菜单栏
 const menuList = [
   {
@@ -19,7 +20,12 @@ const menuList = [
 export default class LeftMenu extends Vue {
   render() {
     return (
-      <el-menu active-text-color="#409EFF" class="el-menu-vertical-demo">
+      <el-menu
+        text-color="#ffffff"
+        active-text-color="#409EFF"
+        class={style.menu}
+        default-active="1"
+      >
         {menuList.map((item, index) => (
           <el-menu-item
             index={(++index).toString()}

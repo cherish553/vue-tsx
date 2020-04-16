@@ -1,8 +1,10 @@
 @import '@/style/index.scss';
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
+
 html,
 body,
 #app,
@@ -19,13 +21,37 @@ body,
 #app {
     // background-image: url('http://cdns.cherish553.cn/back.jpg');
     background-color: skyblue;
-    .el-card{
+
+    .el-card {
         // background-color: transparent;
+    }
+
+    .el-menu {
+        border: none;
+        background-color: rgba(0, 0, 0, .3);
+        .el-menu-item {
+            @include flex(center);
+            // color: #fff;
+
+            &:focus,
+            &:hover {
+                background-color: rgba(64, 158, 255, .5);
+            }
+
+            i {
+                color: #fff;
+            }
+        }
+        .is-active{
+            i{
+                color: #409EFF;
+            }
+        }
     }
 }
 
-.white{
-    color:white
+.white {
+    color: white
 }
 
 .dropdownImg {
@@ -33,6 +59,7 @@ body,
     width: 100px;
     height: 50px;
 }
-.center{
-    @include flex(center)
+
+.center {
+    @include flex(center);
 }

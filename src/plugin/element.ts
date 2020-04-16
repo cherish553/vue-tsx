@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
 import {
   Button,
   Message,
@@ -14,15 +14,10 @@ import {
   Popover,
   Menu,
   MenuItem,
+  Switch,
 } from 'element-ui'
-class Vues {
-  public use(arg) {
-    if (arg) return this
-    return this
-  }
-}
 export default {
-  install(Vue: Vues) {
+  install(Vue: VueConstructor) {
     Vue.use(Button)
       .use(Card)
       .use(Table)
@@ -36,6 +31,7 @@ export default {
       .use(Popover)
       .use(Menu)
       .use(MenuItem)
+      .use(Switch)
   },
 }
 Vue.prototype.$message = Message

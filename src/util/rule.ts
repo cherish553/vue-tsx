@@ -25,6 +25,6 @@ export function normalRules(key: string | Array<ArrKey>, message?: string) {
       { required: true, message: `请输入${now.message}`, trigger: 'blur' },
     ]
     return pre
-  }, {})
+  }, {} as Rule)
   return rule
 }

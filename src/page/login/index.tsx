@@ -15,6 +15,7 @@ export default class Login extends Mixins(From) {
     userName: '',
     passWord: '',
   }
+  value = true
   rules = normalRules([
     { key: 'userName', message: '用户名' },
     { key: 'passWord', message: '密码' },
@@ -36,7 +37,7 @@ export default class Login extends Mixins(From) {
   render() {
     const { rules, form, submit, reset } = this
     return (
-      <el-card class={classNames(style.container, 'container')}>
+      <div class={classNames(style.container, 'container')}>
         <el-card class={style.card}>
           <div slot="header" class="clearfix">
             <h2 class={style.title}>李可凡个人博客管理后台</h2>
@@ -71,7 +72,7 @@ export default class Login extends Mixins(From) {
             </el-form-item>
           </el-form>
         </el-card>
-      </el-card>
+      </div>
     )
   }
 }

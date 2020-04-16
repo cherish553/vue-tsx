@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import { Warn, Error, ErrorStatus } from './util'
 import Cookies from 'js-cookie'
 const http = axios.create({
@@ -34,7 +34,7 @@ http.interceptors.response.use(
     return Promise.resolve(false)
   }
 )
-export const get = (url: string, params: object): Promise<any> =>
+export const get = <T>(url: string, params: object): Promise<T> =>
   http.get(url, { params })
 export const post = http.post
 export const put = http.put

@@ -1,0 +1,6 @@
+  @import '@/style/index.scss';
+
+  .header {
+    @include flex;
+    height: 50px;
+  }
