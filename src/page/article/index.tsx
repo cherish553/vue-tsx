@@ -13,9 +13,29 @@ export default class Article extends Vue {
   title = this.$root.$route.meta.title
   render() {
     return (
-      <div>
+      <div class={'111'}>
         <CherishTitle title={this.title} />
-        {/* <HelloWorld /> */}
+        {/* <div class={style.search}> */}
+        <el-row gutter={20}>
+          <el-col span={5}>
+            <el-input></el-input>
+          </el-col>
+          <el-col span={5}>
+            <el-input></el-input>
+          </el-col>
+          <el-col span={5}>
+            <el-input></el-input>
+          </el-col>
+          <el-col span={5}>
+            <el-input></el-input>
+          </el-col>
+          <el-col span={2}>
+            <el-button icon="el-icon-search" type="primary">
+              搜索
+            </el-button>
+          </el-col>
+        </el-row>
+        {/* </div> */}
       </div>
     )
   }

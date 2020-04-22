@@ -14,7 +14,8 @@ import {
   Popover,
   Menu,
   MenuItem,
-  Switch,
+  Row,
+  Col,
 } from 'element-ui'
 export default {
   install(Vue: VueConstructor) {
@@ -31,7 +32,8 @@ export default {
       .use(Popover)
       .use(Menu)
       .use(MenuItem)
-      .use(Switch)
+      .use(Row)
+      .use(Col)
   },
 }
 Vue.prototype.$message = Message

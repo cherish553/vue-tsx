@@ -1,18 +1,23 @@
 import { Component, Vue } from 'vue-property-decorator'
 import style from './index.module.scss'
+import { jump } from '@/util'
+import { MenuList } from '@/interface'
 // 左侧菜单栏
-const menuList = [
+const menuList: Array<MenuList> = [
   {
     iClass: 'el-icon-document',
     spanText: '文章管理',
+    url: 'article',
   },
   {
     iClass: 'el-icon-collection-tag',
     spanText: '文章类别',
+    url: 'category',
   },
   {
     iClass: 'el-icon-tickets',
     spanText: '标签类别',
+    url: 'tag',
   },
 ]
 
@@ -28,6 +33,7 @@ export default class LeftMenu extends Vue {
       >
         {menuList.map((item, index) => (
           <el-menu-item
+            onClick={() => jump(item.url)}
             index={(++index).toString()}
             scopedSlots={{
               title: () => [

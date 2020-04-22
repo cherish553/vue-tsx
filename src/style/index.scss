@@ -10,4 +10,10 @@
     padding: $padding
 }
 
+@mixin flexDir(){
+    height: 100%;
+    flex-direction: column;
+}
+
 $headersHeight: 60px
+

@@ -2,18 +2,17 @@
 
 .container {
     @include flex(flex-start, flex-start);
-    height: 100%;
-   
-    flex-direction: column;
+    @include flexDir();
 
     .layout-container {
         @include flex(flex-start, flex-start);
         flex: 1;
         width: 100%;
-
+       
         &-main {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100%;
             flex: 1;
-
         }
     }
 }

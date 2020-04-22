@@ -8,3 +8,8 @@ export interface LoginParams {
   userName: string
   passWord: string
 }
+export type MenuList = {
+  iClass: string
+  spanText: string
+  url: string
+}
